@@ -1,0 +1,197 @@
+
+Showing logs for build [32mpolasekr-go-http-master-mpmnv-16[0m stage [32mfrom-build-pack[0m and container [32mstep-credential-initializer-4q7jj[0m
+{"level":"warn","ts":1584837407.0031052,"logger":"fallback-logger","caller":"logging/config.go:69","msg":"Fetch GitHub commit ID from kodata failed: \"ref: refs/heads/0.8.0-**-support-backwards-incompats\" is not a valid GitHub commit ID"}
+{"level":"info","ts":1584837407.0033898,"logger":"fallback-logger","caller":"creds-init/main.go:40","msg":"Credentials initialized."}
+
+Showing logs for build [32mpolasekr-go-http-master-mpmnv-16[0m stage [32mfrom-build-pack[0m and container [32mstep-working-dir-initializer-llld7[0m
+{"level":"warn","ts":1584837408.0323207,"logger":"fallback-logger","caller":"logging/config.go:69","msg":"Fetch GitHub commit ID from kodata failed: open /var/run/ko/HEAD: no such file or directory"}
+{"level":"info","ts":1584837408.0341785,"logger":"fallback-logger","caller":"bash/main.go:64","msg":"Successfully executed command \"sh -c mkdir -p /workspace/source\"; output "}
+
+Showing logs for build [32mpolasekr-go-http-master-mpmnv-16[0m stage [32mfrom-build-pack[0m and container [32mstep-place-tools[0m
+
+Showing logs for build [32mpolasekr-go-http-master-mpmnv-16[0m stage [32mfrom-build-pack[0m and container [32mstep-git-source-polasekr-go-http-master-mpmnv-7l27f[0m
+{"level":"warn","ts":1584837413.097952,"logger":"fallback-logger","caller":"logging/config.go:69","msg":"Fetch GitHub commit ID from kodata failed: \"ref: refs/heads/0.8.0-**-support-backwards-incompats\" is not a valid GitHub commit ID"}
+{"level":"info","ts":1584837413.5663357,"logger":"fallback-logger","caller":"git/git.go:103","msg":"Successfully cloned https://github.com/********/go-http.git @ v0.0.20 in path /workspace/source"}
+
+Showing logs for build [32mpolasekr-go-http-master-mpmnv-16[0m stage [32mfrom-build-pack[0m and container [32mstep-git-merge[0m
+Using SHAs from PULL_REFS=master:
+WARNING: no SHAs to merge, falling back to initial cloned commit
+
+Showing logs for build [32mpolasekr-go-http-master-mpmnv-16[0m stage [32mfrom-build-pack[0m and container [32mstep-setup-jx-git-credentials[0m
+failed to get helm version: failed to run 'helm version --short' command in directory '', output: 'Client: v2.14.3+g0e7f3b6
+Error: could not find tiller'
+old helm binary on the PATH so replacing with helm 3
+Generated Git credentials file /workspace/xdg_config/git/credentials
+
+Showing logs for build [32mpolasekr-go-http-master-mpmnv-16[0m stage [32mfrom-build-pack[0m and container [32mstep-build-make-build[0m
+CGO_ENABLED=0 GO15VENDOREXPERIMENT=1 go build -ldflags '' -o bin/go-http main.go
+
+Showing logs for build [32mpolasekr-go-http-master-mpmnv-16[0m stage [32mfrom-build-pack[0m and container [32mstep-build-container-build[0m
+[37mDEBU[0m[0000] Copying file /workspace/source/Dockerfile to /kaniko/Dockerfile 
+[36mINFO[0m[0000] No base image, nothing to extract            
+[36mINFO[0m[0000] cmd: EXPOSE                                  
+[36mINFO[0m[0000] Adding exposed port: 8080/tcp                
+[37mDEBU[0m[0000] Resolved ./bin/ to bin/                      
+[37mDEBU[0m[0000] Resolved / to /                              
+[36mINFO[0m[0000] Using files from context: [/workspace/source/bin] 
+[36mINFO[0m[0000] Skipping unpacking as no commands require it. 
+[37mDEBU[0m[0000] Read the following line from /proc/self/mountinfo: 2087 1747 0:317 / / rw,relatime master:229 - overlay overlay rw,lowerdir=/var/lib/docker/overlay2/l/6UMWS6WTVCXTE7JXNSMNUVFPCI:/var/lib/docker/overlay2/l/6KMGB7UKFPW2VBUBAEEMUQYTTH:/var/lib/docker/overlay2/l/BPCHH5VUNMLKEZX22JAD7TYP2K:/var/lib/docker/overlay2/l/YX6CMJRJI2YYU6QYRTO5GGEEGZ:/var/lib/docker/overlay2/l/6G7NXNJ7FKTXM32YV6LETEXN7Z:/var/lib/docker/overlay2/l/UIJNOFVMO7IX7MTGCRAWWMLAJ7:/var/lib/docker/overlay2/l/Z5PY2XSOEQQ65YSERI4KN7Q6NM:/var/lib/docker/overlay2/l/WP5E6I3NBE5GI42VXLDL7HP2EY,upperdir=/var/lib/docker/overlay2/813d871e07806a885035681198973c66a53f24ca547afa5ed55d8b449c8173b1/diff,workdir=/var/lib/docker/overlay2/813d871e07806a885035681198973c66a53f24ca547afa5ed55d8b449c8173b1/work
+ 
+[37mDEBU[0m[0000] Read the following line from /proc/self/mountinfo: 2088 2087 0:318 / /proc rw,nosuid,nodev,noexec,relatime - proc proc rw
+ 
+[37mDEBU[0m[0000] Appending /proc from line: 2088 2087 0:318 / /proc rw,nosuid,nodev,noexec,relatime - proc proc rw
+ 
+[37mDEBU[0m[0000] Read the following line from /proc/self/mountinfo: 2089 2087 0:319 / /dev rw,nosuid - tmpfs tmpfs rw,size=65536k,mode=755
+ 
+[37mDEBU[0m[0000] Appending /dev from line: 2089 2087 0:319 / /dev rw,nosuid - tmpfs tmpfs rw,size=65536k,mode=755
+ 
+[37mDEBU[0m[0000] Read the following line from /proc/self/mountinfo: 2090 2089 0:320 / /dev/pts rw,nosuid,noexec,relatime - devpts devpts rw,gid=5,mode=620,ptmxmode=666
+ 
+[37mDEBU[0m[0000] Appending /dev/pts from line: 2090 2089 0:320 / /dev/pts rw,nosuid,noexec,relatime - devpts devpts rw,gid=5,mode=620,ptmxmode=666
+ 
+[37mDEBU[0m[0000] Read the following line from /proc/self/mountinfo: 2091 2087 0:175 / /sys rw,nosuid,nodev,noexec,relatime - sysfs sysfs ro
+ 
+[37mDEBU[0m[0000] Appending /sys from line: 2091 2087 0:175 / /sys rw,nosuid,nodev,noexec,relatime - sysfs sysfs ro
+ 
+[37mDEBU[0m[0000] Read the following line from /proc/self/mountinfo: 2092 2091 0:321 / /sys/fs/cgroup rw,nosuid,nodev,noexec,relatime - tmpfs tmpfs rw,mode=755
+ 
+[37mDEBU[0m[0000] Appending /sys/fs/cgroup from line: 2092 2091 0:321 / /sys/fs/cgroup rw,nosuid,nodev,noexec,relatime - tmpfs tmpfs rw,mode=755
+ 
+[37mDEBU[0m[0000] Read the following line from /proc/self/mountinfo: 2093 2092 0:23 /kubepods/burstable/pod35918484-6bd5-11ea-994f-06e6fe61f116/90b3d101b76fc70263b0e3d0e40f4b0e4cb811c4dd640ba38559ef9803651a84 /sys/fs/cgroup/systemd rw,nosuid,nodev,noexec,relatime master:9 - cgroup cgroup rw,xattr,release_agent=/usr/lib/systemd/systemd-cgroups-agent,name=systemd
+ 
+[37mDEBU[0m[0000] Appending /sys/fs/cgroup/systemd from line: 2093 2092 0:23 /kubepods/burstable/pod35918484-6bd5-11ea-994f-06e6fe61f116/90b3d101b76fc70263b0e3d0e40f4b0e4cb811c4dd640ba38559ef9803651a84 /sys/fs/cgroup/systemd rw,nosuid,nodev,noexec,relatime master:9 - cgroup cgroup rw,xattr,release_agent=/usr/lib/systemd/systemd-cgroups-agent,name=systemd
+ 
+[37mDEBU[0m[0000] Read the following line from /proc/self/mountinfo: 2094 2092 0:25 /kubepods/burstable/pod35918484-6bd5-11ea-994f-06e6fe61f116/90b3d101b76fc70263b0e3d0e40f4b0e4cb811c4dd640ba38559ef9803651a84 /sys/fs/cgroup/net_cls,net_prio rw,nosuid,nodev,noexec,relatime master:10 - cgroup cgroup rw,net_cls,net_prio
+ 
+[37mDEBU[0m[0000] Appending /sys/fs/cgroup/net_cls,net_prio from line: 2094 2092 0:25 /kubepods/burstable/pod35918484-6bd5-11ea-994f-06e6fe61f116/90b3d101b76fc70263b0e3d0e40f4b0e4cb811c4dd640ba38559ef9803651a84 /sys/fs/cgroup/net_cls,net_prio rw,nosuid,nodev,noexec,relatime master:10 - cgroup cgroup rw,net_cls,net_prio
+ 
+[37mDEBU[0m[0000] Read the following line from /proc/self/mountinfo: 2095 2092 0:26 /kubepods/burstable/pod35918484-6bd5-11ea-994f-06e6fe61f116/90b3d101b76fc70263b0e3d0e40f4b0e4cb811c4dd640ba38559ef9803651a84 /sys/fs/cgroup/devices rw,nosuid,nodev,noexec,relatime master:11 - cgroup cgroup rw,devices
+ 
+[37mDEBU[0m[0000] Appending /sys/fs/cgroup/devices from line: 2095 2092 0:26 /kubepods/burstable/pod35918484-6bd5-11ea-994f-06e6fe61f116/90b3d101b76fc70263b0e3d0e40f4b0e4cb811c4dd640ba38559ef9803651a84 /sys/fs/cgroup/devices rw,nosuid,nodev,noexec,relatime master:11 - cgroup cgroup rw,devices
+ 
+[37mDEBU[0m[0000] Read the following line from /proc/self/mountinfo: 2096 2092 0:27 /kubepods/burstable/pod35918484-6bd5-11ea-994f-06e6fe61f116/90b3d101b76fc70263b0e3d0e40f4b0e4cb811c4dd640ba38559ef9803651a84 /sys/fs/cgroup/pids rw,nosuid,nodev,noexec,relatime master:12 - cgroup cgroup rw,pids
+ 
+[37mDEBU[0m[0000] Appending /sys/fs/cgroup/pids from line: 2096 2092 0:27 /kubepods/burstable/pod35918484-6bd5-11ea-994f-06e6fe61f116/90b3d101b76fc70263b0e3d0e40f4b0e4cb811c4dd640ba38559ef9803651a84 /sys/fs/cgroup/pids rw,nosuid,nodev,noexec,relatime master:12 - cgroup cgroup rw,pids
+ 
+[37mDEBU[0m[0000] Read the following line from /proc/self/mountinfo: 2097 2092 0:28 /kubepods/burstable/pod35918484-6bd5-11ea-994f-06e6fe61f116/90b3d101b76fc70263b0e3d0e40f4b0e4cb811c4dd640ba38559ef9803651a84 /sys/fs/cgroup/memory rw,nosuid,nodev,noexec,relatime master:13 - cgroup cgroup rw,memory
+ 
+[37mDEBU[0m[0000] Appending /sys/fs/cgroup/memory from line: 2097 2092 0:28 /kubepods/burstable/pod35918484-6bd5-11ea-994f-06e6fe61f116/90b3d101b76fc70263b0e3d0e40f4b0e4cb811c4dd640ba38559ef9803651a84 /sys/fs/cgroup/memory rw,nosuid,nodev,noexec,relatime master:13 - cgroup cgroup rw,memory
+ 
+[37mDEBU[0m[0000] Read the following line from /proc/self/mountinfo: 2098 2092 0:29 /kubepods/burstable/pod35918484-6bd5-11ea-994f-06e6fe61f116/90b3d101b76fc70263b0e3d0e40f4b0e4cb811c4dd640ba38559ef9803651a84 /sys/fs/cgroup/perf_event rw,nosuid,nodev,noexec,relatime master:14 - cgroup cgroup rw,perf_event
+ 
+[37mDEBU[0m[0000] Appending /sys/fs/cgroup/perf_event from line: 2098 2092 0:29 /kubepods/burstable/pod35918484-6bd5-11ea-994f-06e6fe61f116/90b3d101b76fc70263b0e3d0e40f4b0e4cb811c4dd640ba38559ef9803651a84 /sys/fs/cgroup/perf_event rw,nosuid,nodev,noexec,relatime master:14 - cgroup cgroup rw,perf_event
+ 
+[37mDEBU[0m[0000] Read the following line from /proc/self/mountinfo: 2099 2092 0:30 /kubepods/burstable/pod35918484-6bd5-11ea-994f-06e6fe61f116/90b3d101b76fc70263b0e3d0e40f4b0e4cb811c4dd640ba38559ef9803651a84 /sys/fs/cgroup/hugetlb rw,nosuid,nodev,noexec,relatime master:15 - cgroup cgroup rw,hugetlb
+ 
+[37mDEBU[0m[0000] Appending /sys/fs/cgroup/hugetlb from line: 2099 2092 0:30 /kubepods/burstable/pod35918484-6bd5-11ea-994f-06e6fe61f116/90b3d101b76fc70263b0e3d0e40f4b0e4cb811c4dd640ba38559ef9803651a84 /sys/fs/cgroup/hugetlb rw,nosuid,nodev,noexec,relatime master:15 - cgroup cgroup rw,hugetlb
+ 
+[37mDEBU[0m[0000] Read the following line from /proc/self/mountinfo: 2100 2092 0:31 /kubepods/burstable/pod35918484-6bd5-11ea-994f-06e6fe61f116/90b3d101b76fc70263b0e3d0e40f4b0e4cb811c4dd640ba38559ef9803651a84 /sys/fs/cgroup/cpu,cpuacct rw,nosuid,nodev,noexec,relatime master:16 - cgroup cgroup rw,cpu,cpuacct
+ 
+[37mDEBU[0m[0000] Appending /sys/fs/cgroup/cpu,cpuacct from line: 2100 2092 0:31 /kubepods/burstable/pod35918484-6bd5-11ea-994f-06e6fe61f116/90b3d101b76fc70263b0e3d0e40f4b0e4cb811c4dd640ba38559ef9803651a84 /sys/fs/cgroup/cpu,cpuacct rw,nosuid,nodev,noexec,relatime master:16 - cgroup cgroup rw,cpu,cpuacct
+ 
+[37mDEBU[0m[0000] Read the following line from /proc/self/mountinfo: 2101 2092 0:32 /kubepods/burstable/pod35918484-6bd5-11ea-994f-06e6fe61f116/90b3d101b76fc70263b0e3d0e40f4b0e4cb811c4dd640ba38559ef9803651a84 /sys/fs/cgroup/blkio rw,nosuid,nodev,noexec,relatime master:17 - cgroup cgroup rw,blkio
+ 
+[37mDEBU[0m[0000] Appending /sys/fs/cgroup/blkio from line: 2101 2092 0:32 /kubepods/burstable/pod35918484-6bd5-11ea-994f-06e6fe61f116/90b3d101b76fc70263b0e3d0e40f4b0e4cb811c4dd640ba38559ef9803651a84 /sys/fs/cgroup/blkio rw,nosuid,nodev,noexec,relatime master:17 - cgroup cgroup rw,blkio
+ 
+[37mDEBU[0m[0000] Read the following line from /proc/self/mountinfo: 2102 2092 0:33 /kubepods/burstable/pod35918484-6bd5-11ea-994f-06e6fe61f116/90b3d101b76fc70263b0e3d0e40f4b0e4cb811c4dd640ba38559ef9803651a84 /sys/fs/cgroup/freezer rw,nosuid,nodev,noexec,relatime master:18 - cgroup cgroup rw,freezer
+ 
+[37mDEBU[0m[0000] Appending /sys/fs/cgroup/freezer from line: 2102 2092 0:33 /kubepods/burstable/pod35918484-6bd5-11ea-994f-06e6fe61f116/90b3d101b76fc70263b0e3d0e40f4b0e4cb811c4dd640ba38559ef9803651a84 /sys/fs/cgroup/freezer rw,nosuid,nodev,noexec,relatime master:18 - cgroup cgroup rw,freezer
+ 
+[37mDEBU[0m[0000] Read the following line from /proc/self/mountinfo: 2103 2092 0:34 /kubepods/burstable/pod35918484-6bd5-11ea-994f-06e6fe61f116/90b3d101b76fc70263b0e3d0e40f4b0e4cb811c4dd640ba38559ef9803651a84 /sys/fs/cgroup/cpuset rw,nosuid,nodev,noexec,relatime master:19 - cgroup cgroup rw,cpuset
+ 
+[37mDEBU[0m[0000] Appending /sys/fs/cgroup/cpuset from line: 2103 2092 0:34 /kubepods/burstable/pod35918484-6bd5-11ea-994f-06e6fe61f116/90b3d101b76fc70263b0e3d0e40f4b0e4cb811c4dd640ba38559ef9803651a84 /sys/fs/cgroup/cpuset rw,nosuid,nodev,noexec,relatime master:19 - cgroup cgroup rw,cpuset
+ 
+[37mDEBU[0m[0000] Read the following line from /proc/self/mountinfo: 2104 2089 0:171 / /dev/mqueue rw,nosuid,nodev,noexec,relatime - mqueue mqueue rw
+ 
+[37mDEBU[0m[0000] Appending /dev/mqueue from line: 2104 2089 0:171 / /dev/mqueue rw,nosuid,nodev,noexec,relatime - mqueue mqueue rw
+ 
+[37mDEBU[0m[0000] Read the following line from /proc/self/mountinfo: 2105 2087 259:1 /var/lib/kubelet/pods/35918484-6bd5-11ea-994f-06e6fe61f116/volumes/kubernetes.io~empty-dir/workspace /workspace rw,noatime - xfs /dev/nvme0n1p1 rw,attr2,inode64,noquota
+ 
+[37mDEBU[0m[0000] Appending /workspace from line: 2105 2087 259:1 /var/lib/kubelet/pods/35918484-6bd5-11ea-994f-06e6fe61f116/volumes/kubernetes.io~empty-dir/workspace /workspace rw,noatime - xfs /dev/nvme0n1p1 rw,attr2,inode64,noquota
+ 
+[37mDEBU[0m[0000] Read the following line from /proc/self/mountinfo: 2106 2087 259:1 /var/lib/docker/volumes/f4304e6f5e860dfa008a5ddb57751cba2451ef20d3902e85016a03327aa8bc9b/_data /busybox rw,noatime master:1 - xfs /dev/nvme0n1p1 rw,attr2,inode64,noquota
+ 
+[37mDEBU[0m[0000] Appending /busybox from line: 2106 2087 259:1 /var/lib/docker/volumes/f4304e6f5e860dfa008a5ddb57751cba2451ef20d3902e85016a03327aa8bc9b/_data /busybox rw,noatime master:1 - xfs /dev/nvme0n1p1 rw,attr2,inode64,noquota
+ 
+[37mDEBU[0m[0000] Read the following line from /proc/self/mountinfo: 2107 2087 259:1 /var/lib/kubelet/pods/35918484-6bd5-11ea-994f-06e6fe61f116/volumes/kubernetes.io~empty-dir/home /builder/home rw,noatime - xfs /dev/nvme0n1p1 rw,attr2,inode64,noquota
+ 
+[37mDEBU[0m[0000] Appending /builder/home from line: 2107 2087 259:1 /var/lib/kubelet/pods/35918484-6bd5-11ea-994f-06e6fe61f116/volumes/kubernetes.io~empty-dir/home /builder/home rw,noatime - xfs /dev/nvme0n1p1 rw,attr2,inode64,noquota
+ 
+[37mDEBU[0m[0000] Read the following line from /proc/self/mountinfo: 2108 2089 259:1 /var/lib/kubelet/pods/35918484-6bd5-11ea-994f-06e6fe61f116/containers/step-build-container-build/123edfbe /dev/termination-log rw,noatime - xfs /dev/nvme0n1p1 rw,attr2,inode64,noquota
+ 
+[37mDEBU[0m[0000] Appending /dev/termination-log from line: 2108 2089 259:1 /var/lib/kubelet/pods/35918484-6bd5-11ea-994f-06e6fe61f116/containers/step-build-container-build/123edfbe /dev/termination-log rw,noatime - xfs /dev/nvme0n1p1 rw,attr2,inode64,noquota
+ 
+[37mDEBU[0m[0000] Read the following line from /proc/self/mountinfo: 2109 2087 259:1 /var/lib/kubelet/pods/35918484-6bd5-11ea-994f-06e6fe61f116/volumes/kubernetes.io~empty-dir/workspace-volume /home/jenkins rw,noatime - xfs /dev/nvme0n1p1 rw,attr2,inode64,noquota
+ 
+[37mDEBU[0m[0000] Appending /home/jenkins from line: 2109 2087 259:1 /var/lib/kubelet/pods/35918484-6bd5-11ea-994f-06e6fe61f116/volumes/kubernetes.io~empty-dir/workspace-volume /home/jenkins rw,noatime - xfs /dev/nvme0n1p1 rw,attr2,inode64,noquota
+ 
+[37mDEBU[0m[0000] Read the following line from /proc/self/mountinfo: 2110 2087 0:168 / /etc/podinfo ro,relatime - tmpfs tmpfs rw
+ 
+[37mDEBU[0m[0000] Appending /etc/podinfo from line: 2110 2087 0:168 / /etc/podinfo ro,relatime - tmpfs tmpfs rw
+ 
+[37mDEBU[0m[0000] Read the following line from /proc/self/mountinfo: 2111 2087 259:1 /var/lib/kubelet/pods/35918484-6bd5-11ea-994f-06e6fe61f116/volumes/kubernetes.io~empty-dir/tools /builder/tools rw,noatime - xfs /dev/nvme0n1p1 rw,attr2,inode64,noquota
+ 
+[37mDEBU[0m[0000] Appending /builder/tools from line: 2111 2087 259:1 /var/lib/kubelet/pods/35918484-6bd5-11ea-994f-06e6fe61f116/volumes/kubernetes.io~empty-dir/tools /builder/tools rw,noatime - xfs /dev/nvme0n1p1 rw,attr2,inode64,noquota
+ 
+[37mDEBU[0m[0000] Read the following line from /proc/self/mountinfo: 2112 2087 259:1 /var/lib/docker/containers/6e89ea1b0b5d96a9b2dae37d7496c55a7191dbc483e7f28e31cd4d985413686c/resolv.conf /etc/resolv.conf rw,noatime - xfs /dev/nvme0n1p1 rw,attr2,inode64,noquota
+ 
+[37mDEBU[0m[0000] Appending /etc/resolv.conf from line: 2112 2087 259:1 /var/lib/docker/containers/6e89ea1b0b5d96a9b2dae37d7496c55a7191dbc483e7f28e31cd4d985413686c/resolv.conf /etc/resolv.conf rw,noatime - xfs /dev/nvme0n1p1 rw,attr2,inode64,noquota
+ 
+[37mDEBU[0m[0000] Read the following line from /proc/self/mountinfo: 2113 2087 259:1 /var/lib/docker/containers/6e89ea1b0b5d96a9b2dae37d7496c55a7191dbc483e7f28e31cd4d985413686c/hostname /etc/hostname rw,noatime - xfs /dev/nvme0n1p1 rw,attr2,inode64,noquota
+ 
+[37mDEBU[0m[0000] Appending /etc/hostname from line: 2113 2087 259:1 /var/lib/docker/containers/6e89ea1b0b5d96a9b2dae37d7496c55a7191dbc483e7f28e31cd4d985413686c/hostname /etc/hostname rw,noatime - xfs /dev/nvme0n1p1 rw,attr2,inode64,noquota
+ 
+[37mDEBU[0m[0000] Read the following line from /proc/self/mountinfo: 2114 2087 259:1 /var/lib/kubelet/pods/35918484-6bd5-11ea-994f-06e6fe61f116/etc-hosts /etc/hosts rw,noatime - xfs /dev/nvme0n1p1 rw,attr2,inode64,noquota
+ 
+[37mDEBU[0m[0000] Appending /etc/hosts from line: 2114 2087 259:1 /var/lib/kubelet/pods/35918484-6bd5-11ea-994f-06e6fe61f116/etc-hosts /etc/hosts rw,noatime - xfs /dev/nvme0n1p1 rw,attr2,inode64,noquota
+ 
+[37mDEBU[0m[0000] Read the following line from /proc/self/mountinfo: 2115 2089 0:170 / /dev/shm rw,nosuid,nodev,noexec,relatime - tmpfs shm rw,size=65536k
+ 
+[37mDEBU[0m[0000] Appending /dev/shm from line: 2115 2089 0:170 / /dev/shm rw,nosuid,nodev,noexec,relatime - tmpfs shm rw,size=65536k
+ 
+[37mDEBU[0m[0000] Read the following line from /proc/self/mountinfo: 2116 2087 0:165 / /var/run/secrets/kubernetes.io/serviceaccount ro,relatime - tmpfs tmpfs rw
+ 
+[37mDEBU[0m[0000] Appending /var/run/secrets/kubernetes.io/serviceaccount from line: 2116 2087 0:165 / /var/run/secrets/kubernetes.io/serviceaccount ro,relatime - tmpfs tmpfs rw
+ 
+[37mDEBU[0m[0000] Read the following line from /proc/self/mountinfo:  
+[37mDEBU[0m[0000] Reached end of file /proc/self/mountinfo     
+[36mINFO[0m[0000] Taking snapshot of full filesystem...        
+[37mDEBU[0m[0000] Skipping paths under /kaniko, as it is a whitelisted directory 
+[37mDEBU[0m[0000] Skipping paths under /workspace, as it is a whitelisted directory 
+[37mDEBU[0m[0000] Skipping paths under /builder/home, as it is a whitelisted directory 
+[37mDEBU[0m[0000] Skipping paths under /builder/tools, as it is a whitelisted directory 
+[37mDEBU[0m[0000] Skipping paths under /home/jenkins, as it is a whitelisted directory 
+[37mDEBU[0m[0000] Skipping paths under /etc/podinfo, as it is a whitelisted directory 
+[37mDEBU[0m[0000] Skipping paths under /var/run, as it is a whitelisted directory 
+[37mDEBU[0m[0000] Skipping paths under /dev, as it is a whitelisted directory 
+[37mDEBU[0m[0000] Skipping paths under /proc, as it is a whitelisted directory 
+[37mDEBU[0m[0000] Skipping paths under /sys, as it is a whitelisted directory 
+[37mDEBU[0m[0000] Skipping paths under /busybox, as it is a whitelisted directory 
+[37mDEBU[0m[0000] Adding / to layer, because it was changed.   
+[37mDEBU[0m[0000] Adding /builder to layer, because it was changed. 
+[37mDEBU[0m[0000] Adding /home to layer, because it was changed. 
+[37mDEBU[0m[0000] Adding /etc to layer, because it was changed. 
+[37mDEBU[0m[0000] Adding /var to layer, because it was changed. 
+[37mDEBU[0m[0000] Adding /.dockerenv to layer, because it was changed. 
+[36mINFO[0m[0000] EXPOSE 8080                                  
+[36mINFO[0m[0000] cmd: EXPOSE                                  
+[36mINFO[0m[0000] Adding exposed port: 8080/tcp                
+[36mINFO[0m[0000] No files changed in this command, skipping snapshotting. 
+[36mINFO[0m[0000] ENTRYPOINT ["/go-http"]                      
+[36mINFO[0m[0000] No files changed in this command, skipping snapshotting. 
+[37mDEBU[0m[0000] Resolved ./bin/ to bin/                      
+[37mDEBU[0m[0000] Resolved / to /                              
+[36mINFO[0m[0000] Using files from context: [/workspace/source/bin] 
+[36mINFO[0m[0000] COPY ./bin/ /                                
+[37mDEBU[0m[0000] Resolved ./bin/ to bin/                      
+[37mDEBU[0m[0000] Resolved / to /                              
+[37mDEBU[0m[0000] Getting files and contents at root /workspace/source/bin 
+[37mDEBU[0m[0000] Creating directory /                         
+[37mDEBU[0m[0000] Copying file /workspace/source/bin/go-http to /go-http 
+[36mINFO[0m[0000] Taking snapshot of files...                  
+[37mDEBU[0m[0000] Taking snapshot of files [/ /go-http]        
+[37mDEBU[0m[0000] Adding file / to tar                         
+[37mDEBU[0m[0000] Adding file /go-http to tar                  
+error pushing image: failed to push to destination index.docker.io/v1//rhithm/go-http:0.0.20: unsupported status code 401; body: 
+[31m
+Pipeline failed on stage 'from-build-pack' : container 'step-build-container-build'. The execution of the pipeline has stopped.[0m

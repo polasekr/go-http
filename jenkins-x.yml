@@ -52,11 +52,14 @@ pipelineConfig:
             image: go
             name: build-make-linux
           - args:
-            - -c
-            - >
-              ls -l /kaniko/.docker/ &&
-              /kaniko/executor --cache=true --cache-dir=/workspace --context=/workspace/source --dockerfile=/workspace/source/Dockerfile --destination=index.docker.io/v1//rhithm/go-http:${inputs.params.version} --cache-repo=index.docker.io/v1//todo/cache --skip-tls-verify-registry=index.docker.io/v1/ --verbosity=debug
-            command: /busybox/sh
+            - --cache=true
+            - --cache-dir=/workspace
+            - --context=/workspace/source
+            - --dockerfile=/workspace/source/Dockerfile
+            - --destination=index.docker.io/v1//rhithm/go-http:${inputs.params.version}
+            - --cache-repo=index.docker.io/v1//todo/cache
+            - --skip-tls-verify-registry=index.docker.io/v1/
+            command: /kaniko/executor
             dir: /workspace/source
             image: gcr.io/kaniko-project/executor:9912ccbf8d22bbafbf971124600fbb0b13b9cbd6
             name: build-container-build
@@ -120,11 +123,15 @@ pipelineConfig:
             image: go
             name: build-make-build
           - args:
-            - -c
-            - >
-              ls -l /kaniko/.docker/ &&
-              /kaniko/executor --cache=true --cache-dir=/workspace --context=/workspace/source --dockerfile=/workspace/source/Dockerfile --destination=index.docker.io/v1//rhithm/go-http:${inputs.params.version} --cache-repo=index.docker.io/v1//todo/cache --skip-tls-verify-registry=index.docker.io/v1/ --verbosity=debug
-            command: /busybox/sh
+            - --cache=true
+            - --cache-dir=/workspace
+            - --context=/workspace/source
+            - --dockerfile=/workspace/source/Dockerfile
+            - --destination=index.docker.io/v1//rhithm/go-http:${inputs.params.version}
+            - --cache-repo=index.docker.io/v1//todo/cache
+            - --skip-tls-verify-registry=index.docker.io/v1/
+            - --verbosity=debug
+            command: /kaniko/executor
             dir: /workspace/source
             image: gcr.io/kaniko-project/executor:9912ccbf8d22bbafbf971124600fbb0b13b9cbd6
             name: build-container-build

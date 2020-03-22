@@ -1,7 +1,1 @@
 buildPack: go
-pipelineConfig:
-  pipelines:
-    release:
-      build:
-        preSteps:
-        - command: sleep 240

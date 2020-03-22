@@ -4,7 +4,7 @@
 replicaCount: 1
 image:
   repository: index.docker.io/v1//rhithm/go-http
-  tag: 0.0.21
+  tag: 0.0.22
   pullPolicy: IfNotPresent
 
 # define environment variables here as a map of key: value

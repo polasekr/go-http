@@ -2,7 +2,6 @@ buildPack: go
 pipelineConfig:
   pipelines:
     release:
-      postBuild:
-        replace: true
-        steps:
-        - command: sleep 180
+      build:
+        preSteps:
+        - command: sleep 240

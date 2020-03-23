@@ -94,9 +94,15 @@ pipelineConfig:
             volumeMounts:
             - mountPath: /home/jenkins
               name: workspace-volume
+            - mountPath: /kaniko/.docker/config.json
+              name: docker-config-json
+              subPath: config.json
           volumes:
           - emptyDir: {}
             name: workspace-volume
+          - name: docker-config-json
+            secret:
+              secretName: jenkins-docker-cfg 
         stages:
         - agent:
             image: go

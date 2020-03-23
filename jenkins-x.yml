@@ -1,1 +1,29 @@
 buildPack: go
+pipelineConfig:
+  pipelines:
+    release:
+      options:
+          containerOptions:
+            volumeMounts:
+            - mountPath: /kaniko/.docker/config.json
+              name: docker-config-json
+              subPath: config.json
+          volumes:
+          - name: docker-config-json
+            secret:
+              secretName: jenkins-docker-cfg 
+      build:
+        replace: true
+        steps:
+        - command: /kaniko/executor
+          args:
+          - --cache=true
+          - --cache-dir=/workspace
+          - --context=/workspace/source
+          - --dockerfile=/workspace/source/Dockerfile
+          - --destination=docker.io/rhithmapp/go-http:${inputs.params.version}
+          - --cache-repo=docker.io/todo/cache
+          - --skip-tls-verify-registry=docker.io
+          dir: /workspace/source
+          image: gcr.io/kaniko-project/executor:9912ccbf8d22bbafbf971124600fbb0b13b9cbd6
+          name: build-container-build

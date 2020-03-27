@@ -71,17 +71,20 @@ readinessProbe:
 # custom ingress annotations on this service
 ingress:
   annotations:
-#      kubernetes.io/ingress.class: nginx
+    kubernetes.io/ingress.class: "nginx"
+    kubernetes.io/tls-acme: "true"
+    certmanager.k8s.io/cluster-issuer: "letsencrypt-prod"
+    certmanager.k8s.io/acme-challenge-type: "dns01"
 
 # values we use from the `jx-requirements.yml` file if we are using helmfile and helm 3
 jxRequirements:
   ingress:
-    domain: ""
-    externalDNS: false
+    domain: "dev.rhithm.app"
+    externalDNS: true
     namespaceSubDomain: -jx.
     tls:
       email: ""
-      enabled: false
+      enabled: true
       production: false
       secretName: ""
 
@@ -91,3 +94,28 @@ jxRequirements:
     # shared ingress annotations on all services
     annotations:
     #  kubernetes.io/ingress.class: nginx
+
+---
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: nginx-test
+  annotations:
+    kubernetes.io/ingress.class: "nginx"
+    kubernetes.io/tls-acme: "true"
+    certmanager.k8s.io/cluster-issuer: "letsencrypt-prod"
+    certmanager.k8s.io/acme-challenge-type: "dns01"
+spec:
+  tls:
+  - hosts:
+    - nginx-test.dev.statfish.io
+    secretName: dev.statfish.io
+  rules:
+  - host: nginx-test.dev.statfish.io
+    http:
+      paths:
+      - path: /
+        backend:
+          serviceName: nginx-test
+          servicePort: 80
+

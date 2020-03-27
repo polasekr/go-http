@@ -1,1 +1,133 @@
 buildPack: go
+pipelineConfig:
+  agent:
+    dir: /home/jenkins/go/src/REPLACE_ME_GIT_PROVIDER/REPLACE_ME_ORG/REPLACE_ME_APP_NAME
+    image: go
+    label: jenkins-go
+  extends:
+    file: go/pipeline.yaml
+    import: classic
+  pipelines:
+    pullRequest:
+      pipeline:
+        options:
+          containerOptions:
+            securityContext:
+              privileged: true
+            volumeMounts:
+            - mountPath: /home/jenkins
+              name: workspace-volume
+            - mountPath: /kaniko/.docker/config.json
+              name: docker-config-json
+              subPath: config.json
+          volumes:
+          - emptyDir: {}
+            name: workspace-volume
+          - name: docker-config-json
+            secret:
+              secretName: jenkins-docker-cfg 
+        stages:
+        - agent:
+            image: go
+          dir: /workspace/source
+          name: from-build-pack
+          steps:
+          - command: make linux
+            dir: /workspace/source
+            image: go
+            name: build-make-linux
+          - args:
+            - --cache=true
+            - --cache-dir=/workspace
+            - --context=/workspace/source
+            - --dockerfile=/workspace/source/Dockerfile
+            - --destination=docker.io/rhithmapp/go-http:${inputs.params.version}
+            - --cache-repo=docker.io/todo/cache
+            - --skip-tls-verify-registry=docker.io
+            command: /kaniko/executor
+            dir: /workspace/source
+            image: gcr.io/kaniko-project/executor:9912ccbf8d22bbafbf971124600fbb0b13b9cbd6
+            name: build-container-build
+          - command: jx step post build --image $DOCKER_REGISTRY/$ORG/$APP_NAME:$PREVIEW_VERSION
+            dir: /workspace/source
+            image: go
+            name: postbuild-post-build
+          - command: make preview
+            dir: /workspace/source/charts/preview
+            image: go
+            name: promote-make-preview
+          - command: jx preview --app $APP_NAME --dir ../..
+            dir: /workspace/source/charts/preview
+            image: go
+            name: promote-jx-preview
+    release:
+      pipeline:
+        options:
+          containerOptions:
+            securityContext:
+              privileged: true
+            volumeMounts:
+            - mountPath: /home/jenkins
+              name: workspace-volume
+            - mountPath: /kaniko/.docker/config.json
+              name: docker-config-json
+              subPath: config.json
+          volumes:
+          - emptyDir: {}
+            name: workspace-volume
+          - name: docker-config-json
+            secret:
+              secretName: jenkins-docker-cfg 
+        stages:
+        - agent:
+            image: go
+          dir: /workspace/source
+          name: from-build-pack
+          steps:
+          - command: jx step git credentials
+            dir: /workspace/source
+            image: go
+            name: setup-jx-git-credentials
+          - command: make build
+            dir: /workspace/source
+            image: go
+            name: build-make-build
+          - args:
+            - --cache=true
+            - --cache-dir=/workspace
+            - --context=/workspace/source
+            - --dockerfile=/workspace/source/Dockerfile
+            - --destination=docker.io/rhithmapp/go-http:${inputs.params.version}
+            - --cache-repo=docker.io/todo/cache
+            - --skip-tls-verify-registry=docker.io
+            command: /kaniko/executor
+            dir: /workspace/source
+            image: gcr.io/kaniko-project/executor:9912ccbf8d22bbafbf971124600fbb0b13b9cbd6
+            name: build-container-build
+          - command: jx step post build --image $DOCKER_REGISTRY/$ORG/$APP_NAME:${VERSION}
+            dir: /workspace/source
+            image: go
+            name: build-post-build
+          - command: jx step changelog --version v${VERSION}
+            dir: /workspace/source/charts/go-http
+            image: gcr.io/jenkinsxio-labs/jxl
+            name: promote-changelog
+          - command: jx step helm release
+            dir: /workspace/source/charts/go-http
+            image: gcr.io/jenkinsxio-labs/jxl
+            name: promote-helm-release
+          - command: jx promote -b --all-auto --timeout 1h --version ${VERSION}
+            dir: /workspace/source/charts/go-http
+            image: gcr.io/jenkinsxio-labs/jxl
+            name: promote-jx-promote
+      setVersion:
+        steps:
+        - image: go
+          steps:
+          - dir: /home/jenkins/go/src/REPLACE_ME_GIT_PROVIDER/REPLACE_ME_ORG/REPLACE_ME_APP_NAME
+            steps:
+            - comment: so we can retrieve the version in later steps
+              name: next-version
+              sh: jx step next-version --use-git-tag-only
+            - name: tag-version
+              sh: jx step tag --version \$(cat VERSION)

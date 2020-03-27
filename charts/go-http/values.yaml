@@ -86,7 +86,7 @@ jxRequirements:
       email: ""
       enabled: true
       production: false
-      secretName: ""
+      secretName: "tls-secret-jx.dev.rhithm.app"
 
     # For Kubernetes v1.14+, use 'networking.k8s.io/v1beta1'
     apiVersion: "extensions/v1beta1"
@@ -94,28 +94,3 @@ jxRequirements:
     # shared ingress annotations on all services
     annotations:
     #  kubernetes.io/ingress.class: nginx
-
----
-apiVersion: extensions/v1beta1
-kind: Ingress
-metadata:
-  name: nginx-test
-  annotations:
-    kubernetes.io/ingress.class: "nginx"
-    kubernetes.io/tls-acme: "true"
-    certmanager.k8s.io/cluster-issuer: "letsencrypt-prod"
-    certmanager.k8s.io/acme-challenge-type: "dns01"
-spec:
-  tls:
-  - hosts:
-    - nginx-test.dev.statfish.io
-    secretName: dev.statfish.io
-  rules:
-  - host: nginx-test.dev.statfish.io
-    http:
-      paths:
-      - path: /
-        backend:
-          serviceName: nginx-test
-          servicePort: 80
-

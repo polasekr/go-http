@@ -1,0 +1,104 @@
+
+Showing logs for build [32mpolasekr-go-http-pr-10-pr-build-vfgc7-1[0m stage [32mfrom-build-pack[0m and container [32mstep-credential-initializer-4f2ms[0m
+{"level":"warn","ts":1585410966.0989506,"logger":"fallback-logger","caller":"logging/config.go:69","msg":"Fetch GitHub commit ID from kodata failed: \"ref: refs/heads/0.8.0-**-support-backwards-incompats\" is not a valid GitHub commit ID"}
+{"level":"info","ts":1585410966.0992615,"logger":"fallback-logger","caller":"creds-init/main.go:40","msg":"Credentials initialized."}
+
+Showing logs for build [32mpolasekr-go-http-pr-10-pr-build-vfgc7-1[0m stage [32mfrom-build-pack[0m and container [32mstep-working-dir-initializer-stwcq[0m
+{"level":"warn","ts":1585410967.1233969,"logger":"fallback-logger","caller":"logging/config.go:69","msg":"Fetch GitHub commit ID from kodata failed: open /var/run/ko/HEAD: no such file or directory"}
+{"level":"info","ts":1585410967.1245637,"logger":"fallback-logger","caller":"bash/main.go:64","msg":"Successfully executed command \"sh -c mkdir -p /workspace/source\"; output "}
+
+Showing logs for build [32mpolasekr-go-http-pr-10-pr-build-vfgc7-1[0m stage [32mfrom-build-pack[0m and container [32mstep-place-tools[0m
+
+Showing logs for build [32mpolasekr-go-http-pr-10-pr-build-vfgc7-1[0m stage [32mfrom-build-pack[0m and container [32mstep-git-source-polasekr-go-http-pr-10-pr-build-vfgc7-xgf5z[0m
+{"level":"warn","ts":1585410972.146847,"logger":"fallback-logger","caller":"logging/config.go:69","msg":"Fetch GitHub commit ID from kodata failed: \"ref: refs/heads/0.8.0-**-support-backwards-incompats\" is not a valid GitHub commit ID"}
+{"level":"info","ts":1585410972.6433015,"logger":"fallback-logger","caller":"git/git.go:103","msg":"Successfully cloned https://github.com/********/go-http.git @ master in path /workspace/source"}
+
+Showing logs for build [32mpolasekr-go-http-pr-10-pr-build-vfgc7-1[0m stage [32mfrom-build-pack[0m and container [32mstep-git-merge[0m
+Using SHAs from PULL_REFS=master:3206dd32f1537415db329ffa1c6b694c7808852d,10:93c2e0b78ff9c96a3ebc0ee04bef5c269a5f2d1a
+DEBUG: LC_ALL=C JX_LOG_LEVEL=error git fetch origin --unshallow 93c2e0b78ff9c96a3ebc0ee04bef5c269a5f2d1a: 3206dd32f1537415db329ffa1c6b694c7808852d:
+DEBUG: ran git fetch --unshallow origin 93c2e0b78ff9c96a3ebc0ee04bef5c269a5f2d1a: 3206dd32f1537415db329ffa1c6b694c7808852d: in 
+DEBUG: LC_ALL=C JX_LOG_LEVEL=error git branch
+DEBUG: JX_LOG_LEVEL=error LC_ALL=C git checkout master
+DEBUG: ran git checkout master in 
+DEBUG: LC_ALL=C JX_LOG_LEVEL=error git reset --hard 3206dd32f1537415db329ffa1c6b694c7808852d
+DEBUG: ran git reset --hard 3206dd32f1537415db329ffa1c6b694c7808852d in 
+DEBUG: LC_ALL=C JX_LOG_LEVEL=error git clean -fd .
+DEBUG: ran clean --force -d . in 
+DEBUG: LC_ALL=C JX_LOG_LEVEL=error git merge 93c2e0b78ff9c96a3ebc0ee04bef5c269a5f2d1a
+DEBUG: ran git merge 93c2e0b78ff9c96a3ebc0ee04bef5c269a5f2d1a in 
+DEBUG: LC_ALL=C JX_LOG_LEVEL=error git log --format=%H%x1f%an%x1f%ae%x1f%cn%x1f%ce%x1f%s%n%b%x1e 3206dd32f1537415db329ffa1c6b694c7808852d..HEAD
+Merged SHA 93c2e0b78ff9c96a3ebc0ee04bef5c269a5f2d1a with commit message 'ingress controller with modified host' into base branch master
+Merged SHA 0fc0d7caf4cc4df11ccbb43f991f45c468841407 with commit message 'title change on a develop branch' into base branch master
+
+Showing logs for build [32mpolasekr-go-http-pr-10-pr-build-vfgc7-1[0m stage [32mfrom-build-pack[0m and container [32mstep-build-make-linux[0m
+CGO_ENABLED=0 GOOS=linux GOARCH=amd64 GO15VENDOREXPERIMENT=1 go build -ldflags '' -o bin/go-http main.go
+
+Showing logs for build [32mpolasekr-go-http-pr-10-pr-build-vfgc7-1[0m stage [32mfrom-build-pack[0m and container [32mstep-build-container-build[0m
+[36mINFO[0m[0000] No base image, nothing to extract            
+[36mINFO[0m[0000] cmd: EXPOSE                                  
+[36mINFO[0m[0000] Adding exposed port: 8080/tcp                
+[36mINFO[0m[0000] Using files from context: [/workspace/source/bin] 
+[36mINFO[0m[0000] Skipping unpacking as no commands require it. 
+[36mINFO[0m[0000] Taking snapshot of full filesystem...        
+[36mINFO[0m[0005] EXPOSE 8080                                  
+[36mINFO[0m[0005] cmd: EXPOSE                                  
+[36mINFO[0m[0005] Adding exposed port: 8080/tcp                
+[36mINFO[0m[0005] No files changed in this command, skipping snapshotting. 
+[36mINFO[0m[0005] ENTRYPOINT ["/go-http"]                      
+[36mINFO[0m[0005] No files changed in this command, skipping snapshotting. 
+[36mINFO[0m[0005] Using files from context: [/workspace/source/bin] 
+[36mINFO[0m[0005] COPY ./bin/ /                                
+[36mINFO[0m[0005] Taking snapshot of files...                  
+2020/03/28 15:56:30 pushed blob: sha256:bfe0bf37a4c8dfc3f227bd50f01c4e525f3d32d1788d039f624040ab067d47a7
+2020/03/28 15:56:31 pushed blob: sha256:e85e3c507ccb7b62d4848f80df2c6d50d86a33405a5d7c2eb21b5c54e6c707a5
+2020/03/28 15:56:31 index.docker.io/rhithmapp/go-http:0.0.0-SNAPSHOT-PR-10-1: digest: sha256:a91cb86396936108a50330ea08b675632117e24a6909af74abc2540796154aa2 size: 428
+
+Showing logs for build [32mpolasekr-go-http-pr-10-pr-build-vfgc7-1[0m stage [32mfrom-build-pack[0m and container [32mstep-postbuild-post-build[0m
+no CVE provider running in the current ** namespace so skip adding image to be analysed
+
+Showing logs for build [32mpolasekr-go-http-pr-10-pr-build-vfgc7-1[0m stage [32mfrom-build-pack[0m and container [32mstep-promote-make-preview[0m
+sed -i -e "s/version:.*/version: 0.0.0-SNAPSHOT-PR-10-1/" Chart.yaml
+sed -i -e "s/version:.*/version: 0.0.0-SNAPSHOT-PR-10-1/" ../*/Chart.yaml
+sed -i -e "s|repository:.*|repository: docker.io\/rhithmapp\/go-http|" values.yaml
+sed -i -e "s/tag:.*/tag: 0.0.0-SNAPSHOT-PR-10-1/" values.yaml
+echo "  version: 0.0.0-SNAPSHOT-PR-10-1" >> requirements.yaml
+** step helm build
+WARNING: No $CHART_REPOSITORY defined so using the default value of: http://jenkins-x-chartmuseum:8080
+Adding missing Helm repo: storage.googleapis.com https://storage.googleapis.com/chartmuseum.jenkins-x.io
+Successfully added Helm repository storage.googleapis.com.
+Adding missing Helm repo: jenkins-x-chartmuseum http://jenkins-x-chartmuseum:8080
+Successfully added Helm repository jenkins-x-chartmuseum.
+WARNING: No $CHART_REPOSITORY defined so using the default value of: http://jenkins-x-chartmuseum:8080
+Adding missing Helm repo: chartmuseum.jenkins-x.io http://chartmuseum.jenkins-x.io
+Successfully added Helm repository chartmuseum.jenkins-x.io.
+
+Showing logs for build [32mpolasekr-go-http-pr-10-pr-build-vfgc7-1[0m stage [32mfrom-build-pack[0m and container [32mstep-promote-jx-preview[0m
+Creating a preview
+Found commit author match for: ******** with email address: ********@gmail.com
+Created environment ********-go-http-pr-10
+Namespace **-********-go-http-pr-10 created 
+expose:
+  Annotations:
+    helm.sh/hook: post-install,post-upgrade
+    helm.sh/hook-delete-policy: hook-succeeded
+  config:
+    domain: dev.rhithm.app
+    exposer: Ingress
+    http: "true"
+preview:
+  image:
+    repository: docker.io/rhithmapp/go-http
+    tag: 0.0.0-SNAPSHOT-PR-10-1
+
+Updating PipelineActivities ********-go-http-pr-10-1 which has status Running
+WARNING: preview application https://**-********-go-http-pr-10-go-http-**.dev.rhithm.app not available, error was Get https://**-********-go-http-pr-10-go-http-**.dev.rhithm.app: x509: certificate is valid for ingress.local, not **-********-go-http-pr-10-go-http-**.dev.rhithm.app, delaying for: 703.186876ms
+WARNING: preview application https://**-********-go-http-pr-10-go-http-**.dev.rhithm.app not available, error was Get https://**-********-go-http-pr-10-go-http-**.dev.rhithm.app: x509: certificate is valid for ingress.local, not **-********-go-http-pr-10-go-http-**.dev.rhithm.app, delaying for: 792.454625ms
+WARNING: preview application https://**-********-go-http-pr-10-go-http-**.dev.rhithm.app not available, error was Get https://**-********-go-http-pr-10-go-http-**.dev.rhithm.app: x509: certificate is valid for ingress.local, not **-********-go-http-pr-10-go-http-**.dev.rhithm.app, delaying for: 2.349350039s
+WARNING: preview application https://**-********-go-http-pr-10-go-http-**.dev.rhithm.app not available, error was Get https://**-********-go-http-pr-10-go-http-**.dev.rhithm.app: x509: certificate is valid for ingress.local, not **-********-go-http-pr-10-go-http-**.dev.rhithm.app, delaying for: 2.016409337s
+WARNING: preview application https://**-********-go-http-pr-10-go-http-**.dev.rhithm.app not available, error was Get https://**-********-go-http-pr-10-go-http-**.dev.rhithm.app: x509: certificate is valid for ingress.local, not **-********-go-http-pr-10-go-http-**.dev.rhithm.app, delaying for: 3.457307389s
+WARNING: preview application https://**-********-go-http-pr-10-go-http-**.dev.rhithm.app not available, error was Get https://**-********-go-http-pr-10-go-http-**.dev.rhithm.app: x509: certificate is valid for ingress.local, not **-********-go-http-pr-10-go-http-**.dev.rhithm.app, delaying for: 9.042932377s
+WARNING: preview application https://**-********-go-http-pr-10-go-http-**.dev.rhithm.app not available, error was Get https://**-********-go-http-pr-10-go-http-**.dev.rhithm.app: x509: certificate is valid for ingress.local, not **-********-go-http-pr-10-go-http-**.dev.rhithm.app, delaying for: 13.909636263s
+WARNING: preview application https://**-********-go-http-pr-10-go-http-**.dev.rhithm.app not available, error was Get https://**-********-go-http-pr-10-go-http-**.dev.rhithm.app: x509: certificate is valid for ingress.local, not **-********-go-http-pr-10-go-http-**.dev.rhithm.app, delaying for: 10.708661379s
+WARNING: preview application https://**-********-go-http-pr-10-go-http-**.dev.rhithm.app not available, error was Get https://**-********-go-http-pr-10-go-http-**.dev.rhithm.app: x509: certificate is valid for ingress.local, not **-********-go-http-pr-10-go-http-**.dev.rhithm.app, delaying for: 23.065599485s
+WARNING: preview application https://**-********-go-http-pr-10-go-http-**.dev.rhithm.app not available, error was Get https://**-********-go-http-pr-10-go-http-**.dev.rhithm.app: x509: certificate is valid for ingress.local, not **-********-go-http-pr-10-go-http-**.dev.rhithm.app, delaying for: 52.975401261s
+Preview application is now available at: https://**-********-go-http-pr-10-go-http-**.dev.rhithm.app

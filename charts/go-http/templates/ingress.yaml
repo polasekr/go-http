@@ -13,7 +13,7 @@ metadata:
   name: {{ .Values.service.name }}
 spec:
   rules:
-  - host: {{ .Values.service.name }}{{ .Values.jxRequirements.ingress.namespaceSubDomain }}{{ .Values.jxRequirements.ingress.domain }}
+  - host: {{ .Release.Namespace}}-{{ .Values.service.name }}{{ .Values.jxRequirements.ingress.namespaceSubDomain }}{{ .Values.jxRequirements.ingress.domain }}
     http:
       paths:
       - backend:
@@ -22,9 +22,9 @@ spec:
 {{- if .Values.jxRequirements.ingress.tls.enabled }}
   tls:
   - hosts:
-    - {{ .Values.service.name }}{{ .Values.jxRequirements.ingress.namespaceSubDomain }}{{ .Values.jxRequirements.ingress.domain }}
+    - {{ .Release.Namespace}}-{{ .Values.service.name }}{{ .Values.jxRequirements.ingress.namespaceSubDomain }}{{ .Values.jxRequirements.ingress.domain }}
 {{- if hasKey .Values.jxRequirements.ingress.tls "secretName" }}
-    secretName: "{{ .Values.jxRequirements.ingress.tls.secretName }}"
+    secretName: "{{ tpl .Values.jxRequirements.ingress.tls.secretName . }}"
 {{- else if .Values.jxRequirements.ingress.tls.production }}
     secretName: "tls-{{ .Values.jxRequirements.ingress.domain | replace "." "-" }}-p"
 {{- else }}

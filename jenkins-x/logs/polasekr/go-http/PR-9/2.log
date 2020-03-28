@@ -1,0 +1,91 @@
+
+Showing logs for build [32mpolasekr-go-http-pr-9-pr-build-z6vx7-2[0m stage [32mfrom-build-pack[0m and container [32mstep-credential-initializer-sk87v[0m
+{"level":"warn","ts":1585407448.986448,"logger":"fallback-logger","caller":"logging/config.go:69","msg":"Fetch GitHub commit ID from kodata failed: \"ref: refs/heads/0.8.0-**-support-backwards-incompats\" is not a valid GitHub commit ID"}
+{"level":"info","ts":1585407448.9866736,"logger":"fallback-logger","caller":"creds-init/main.go:40","msg":"Credentials initialized."}
+
+Showing logs for build [32mpolasekr-go-http-pr-9-pr-build-z6vx7-2[0m stage [32mfrom-build-pack[0m and container [32mstep-working-dir-initializer-7nf2r[0m
+{"level":"warn","ts":1585407449.9805937,"logger":"fallback-logger","caller":"logging/config.go:69","msg":"Fetch GitHub commit ID from kodata failed: open /var/run/ko/HEAD: no such file or directory"}
+{"level":"info","ts":1585407449.9831622,"logger":"fallback-logger","caller":"bash/main.go:64","msg":"Successfully executed command \"sh -c mkdir -p /workspace/source\"; output "}
+
+Showing logs for build [32mpolasekr-go-http-pr-9-pr-build-z6vx7-2[0m stage [32mfrom-build-pack[0m and container [32mstep-place-tools[0m
+
+Showing logs for build [32mpolasekr-go-http-pr-9-pr-build-z6vx7-2[0m stage [32mfrom-build-pack[0m and container [32mstep-git-source-polasekr-go-http-pr-9-pr-build-z6vx7-mggmv[0m
+{"level":"warn","ts":1585407455.0344725,"logger":"fallback-logger","caller":"logging/config.go:69","msg":"Fetch GitHub commit ID from kodata failed: \"ref: refs/heads/0.8.0-**-support-backwards-incompats\" is not a valid GitHub commit ID"}
+{"level":"info","ts":1585407455.4790921,"logger":"fallback-logger","caller":"git/git.go:103","msg":"Successfully cloned https://github.com/********/go-http.git @ master in path /workspace/source"}
+
+Showing logs for build [32mpolasekr-go-http-pr-9-pr-build-z6vx7-2[0m stage [32mfrom-build-pack[0m and container [32mstep-git-merge[0m
+Using SHAs from PULL_REFS=master:3206dd32f1537415db329ffa1c6b694c7808852d,9:0fc0d7caf4cc4df11ccbb43f991f45c468841407
+DEBUG: LC_ALL=C JX_LOG_LEVEL=error git fetch origin --unshallow 0fc0d7caf4cc4df11ccbb43f991f45c468841407: 3206dd32f1537415db329ffa1c6b694c7808852d:
+DEBUG: ran git fetch --unshallow origin 0fc0d7caf4cc4df11ccbb43f991f45c468841407: 3206dd32f1537415db329ffa1c6b694c7808852d: in 
+DEBUG: LC_ALL=C JX_LOG_LEVEL=error git branch
+DEBUG: LC_ALL=C JX_LOG_LEVEL=error git checkout master
+DEBUG: ran git checkout master in 
+DEBUG: LC_ALL=C JX_LOG_LEVEL=error git reset --hard 3206dd32f1537415db329ffa1c6b694c7808852d
+DEBUG: ran git reset --hard 3206dd32f1537415db329ffa1c6b694c7808852d in 
+DEBUG: LC_ALL=C JX_LOG_LEVEL=error git clean -fd .
+DEBUG: ran clean --force -d . in 
+DEBUG: LC_ALL=C JX_LOG_LEVEL=error git merge 0fc0d7caf4cc4df11ccbb43f991f45c468841407
+DEBUG: ran git merge 0fc0d7caf4cc4df11ccbb43f991f45c468841407 in 
+DEBUG: JX_LOG_LEVEL=error LC_ALL=C git log --format=%H%x1f%an%x1f%ae%x1f%cn%x1f%ce%x1f%s%n%b%x1e 3206dd32f1537415db329ffa1c6b694c7808852d..HEAD
+Merged SHA 0fc0d7caf4cc4df11ccbb43f991f45c468841407 with commit message 'title change on a develop branch' into base branch master
+
+Showing logs for build [32mpolasekr-go-http-pr-9-pr-build-z6vx7-2[0m stage [32mfrom-build-pack[0m and container [32mstep-build-make-linux[0m
+CGO_ENABLED=0 GOOS=linux GOARCH=amd64 GO15VENDOREXPERIMENT=1 go build -ldflags '' -o bin/go-http main.go
+
+Showing logs for build [32mpolasekr-go-http-pr-9-pr-build-z6vx7-2[0m stage [32mfrom-build-pack[0m and container [32mstep-build-container-build[0m
+[36mINFO[0m[0000] No base image, nothing to extract            
+[36mINFO[0m[0000] cmd: EXPOSE                                  
+[36mINFO[0m[0000] Adding exposed port: 8080/tcp                
+[36mINFO[0m[0000] Using files from context: [/workspace/source/bin] 
+[36mINFO[0m[0000] Skipping unpacking as no commands require it. 
+[36mINFO[0m[0000] Taking snapshot of full filesystem...        
+[36mINFO[0m[0003] EXPOSE 8080                                  
+[36mINFO[0m[0003] cmd: EXPOSE                                  
+[36mINFO[0m[0003] Adding exposed port: 8080/tcp                
+[36mINFO[0m[0003] No files changed in this command, skipping snapshotting. 
+[36mINFO[0m[0003] ENTRYPOINT ["/go-http"]                      
+[36mINFO[0m[0003] No files changed in this command, skipping snapshotting. 
+[36mINFO[0m[0003] Using files from context: [/workspace/source/bin] 
+[36mINFO[0m[0003] COPY ./bin/ /                                
+[36mINFO[0m[0003] Taking snapshot of files...                  
+2020/03/28 14:57:50 pushed blob: sha256:5e91c16bf973b025dbd9d9ab0a1aa932893cc91634c639a27795fc3689184bf1
+2020/03/28 14:57:51 pushed blob: sha256:847ba999f4ce48330726ae4dd76397229243934c86e5c012005f1d82b947d3bc
+2020/03/28 14:57:52 index.docker.io/rhithmapp/go-http:0.0.0-SNAPSHOT-PR-9-2: digest: sha256:2d7b7d7565a0ce0c4c6b7216e649ad3367845c217e41b5f68b9eccede9124f69 size: 428
+
+Showing logs for build [32mpolasekr-go-http-pr-9-pr-build-z6vx7-2[0m stage [32mfrom-build-pack[0m and container [32mstep-postbuild-post-build[0m
+no CVE provider running in the current ** namespace so skip adding image to be analysed
+
+Showing logs for build [32mpolasekr-go-http-pr-9-pr-build-z6vx7-2[0m stage [32mfrom-build-pack[0m and container [32mstep-promote-make-preview[0m
+sed -i -e "s/version:.*/version: 0.0.0-SNAPSHOT-PR-9-2/" Chart.yaml
+sed -i -e "s/version:.*/version: 0.0.0-SNAPSHOT-PR-9-2/" ../*/Chart.yaml
+sed -i -e "s|repository:.*|repository: docker.io\/rhithmapp\/go-http|" values.yaml
+sed -i -e "s/tag:.*/tag: 0.0.0-SNAPSHOT-PR-9-2/" values.yaml
+echo "  version: 0.0.0-SNAPSHOT-PR-9-2" >> requirements.yaml
+** step helm build
+WARNING: No $CHART_REPOSITORY defined so using the default value of: http://jenkins-x-chartmuseum:8080
+Adding missing Helm repo: storage.googleapis.com https://storage.googleapis.com/chartmuseum.jenkins-x.io
+Successfully added Helm repository storage.googleapis.com.
+Adding missing Helm repo: jenkins-x-chartmuseum http://jenkins-x-chartmuseum:8080
+Successfully added Helm repository jenkins-x-chartmuseum.
+WARNING: No $CHART_REPOSITORY defined so using the default value of: http://jenkins-x-chartmuseum:8080
+Adding missing Helm repo: chartmuseum.jenkins-x.io http://chartmuseum.jenkins-x.io
+Successfully added Helm repository chartmuseum.jenkins-x.io.
+
+Showing logs for build [32mpolasekr-go-http-pr-9-pr-build-z6vx7-2[0m stage [32mfrom-build-pack[0m and container [32mstep-promote-jx-preview[0m
+Creating a preview
+Found commit author match for: ******** with email address: ********@gmail.com
+expose:
+  Annotations:
+    helm.sh/hook: post-install,post-upgrade
+    helm.sh/hook-delete-policy: hook-succeeded
+  config:
+    domain: dev.rhithm.app
+    exposer: Ingress
+    http: "true"
+preview:
+  image:
+    repository: docker.io/rhithmapp/go-http
+    tag: 0.0.0-SNAPSHOT-PR-9-2
+
+Updating PipelineActivities ********-go-http-pr-9-2 which has status Running
+Preview application is now available at: https://go-http-**.dev.rhithm.app
